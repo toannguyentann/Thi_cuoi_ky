@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <form action="">
+    <input type="number" id="num1" value="0" /> Number 1:
+    <input type="number" id="num2" value="0" /> Number 2:
+    <p id="result"></p>
+    <button onclick="checkValue()">Kiểm tra</button>
+  </form>
+</body>
+<script>
+ function checkValue() {
+    document.getElementById("result").innerHTML = "";
+    val1 = document.getElementById("num1").value;
+    val2 = document.getElementById("num2").value;
+    if ((Number.isInteger(val1) && Number.isInteger(val2)) || val2 < val1)
+        return ;
+    let arrPrime = [];
+    for (let i = val1; i <= val2; ++i) {
+        if (isPrime(i)) {
+            arrPrime.push(i);
+        }
+    }
+    console.log(arrPrime.toString());
+    document.getElementById("result").innerHTML = arrPrime.toString();
+}
+
+function isPrime(n) {
+    let flag = true;
+    if (n < 2) {
+        flag = false;
+    } else {
+        for (let i = 2; i < n - 1; i++) {
+            if (n % i == 0) {
+                flag = false;
+                break;
+            }
+        }
+    }
+    return flag;
+}
+
+</script>
+</html>
